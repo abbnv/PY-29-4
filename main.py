@@ -39,10 +39,6 @@ def occurrences_words_xml(file_name):
     print(counter.most_common(10))
 
 
-
-
-
-
 if __name__ == '__main__':
     with open("newsafr.json", encoding="utf8") as f:
         occurrences_words_json(f)
