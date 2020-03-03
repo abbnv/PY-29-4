@@ -1,5 +1,6 @@
 import json
 import xml.etree.ElementTree as ET
+from collections import Counter
 
 
 def occurrences_words_json(file_name):
@@ -16,8 +17,8 @@ def occurrences_words_json(file_name):
             if news_word_count > 6:
                 words_more_than_six.append(word.lower())
     print("Чаще всего встречаются слова в JSON: ")
-    print(sorted(set(words_more_than_six), key=words_more_than_six.count, reverse=True)[:10])
-
+    counter = Counter(words_more_than_six)
+    print(counter.most_common(10))
 
 def occurrences_words_xml(file_name):
     tree = ET.parse(file_name)
@@ -34,9 +35,12 @@ def occurrences_words_xml(file_name):
             if news_word_count > 6:
                 words_more_than_six.append(word.lower())
     print("Чаще всего встречаются слова в XML: ")
+    counter = Counter(words_more_than_six)
+    print(counter.most_common(10))
 
-    word_list = sorted(set(words_more_than_six), key=words_more_than_six.count, reverse=True)[:10]
-    print(word_list)
+
+
+
 
 
 if __name__ == '__main__':
